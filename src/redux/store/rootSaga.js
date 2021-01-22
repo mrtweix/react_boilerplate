@@ -3,6 +3,8 @@ import { all } from "redux-saga/effects";
 import homepageSaga from "../saga/homepageSaga";
 
 // combine all saga files
-export default function* () {
+function* rootSaga() {
   yield all([homepageSaga()]);
 }
+
+export default rootSaga;

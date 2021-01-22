@@ -2,14 +2,13 @@ import React, { Fragment, memo, useEffect, Suspense } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { withRouter } from "react-router-dom";
-import { Row } from "reactstrap";
+import { Row } from "react-bootstrap";
 import * as actions from "../../redux/actions/homepageActions";
 const Profile = React.lazy(() => import("./Profile"));
 
 function Homepage(props) {
   const { loadHomepage, homepageStore } = props;
-  const { pageData, error } = homepageStore;
-  const userData = pageData && pageData.data;
+  const { users, error } = homepageStore;
 
   useEffect(() => {
     loadHomepage();
@@ -21,14 +20,11 @@ function Homepage(props) {
         <title>HomePage</title>
         <meta name="description" content="Description of HomePage" />
       </Helmet>
-      <h1>Homepage</h1>
-      <Row>
+      <Row style={{ display: "flex", flexWrap: "wrap" }}>
         <Suspense fallback={"Loading..."}>
-          {error
-            ? { error }
-            : userData && userData.length > 0
-            ? userData.map((user, index) => <Profile user={user} key={index} />)
-            : "Loading..."}
+          {users?.length > 0
+            ? users?.map((user, index) => <Profile user={user} key={index} />)
+            : error}
         </Suspense>
       </Row>
     </Fragment>

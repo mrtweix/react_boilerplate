@@ -1,8 +1,8 @@
 import produce from "immer";
 import * as constants from "../actions/homepageActions";
 
-const initialState = {
-  pageData: null,
+export const initialState = {
+  users: null,
   error: null,
 };
 
@@ -13,10 +13,10 @@ const homepageReducer = (state = initialState, action) =>
       case constants.LOAD_HOMEPAGE_DATA:
         break;
       case constants.SET_HOMEPAGE_DATA:
-        draft.pageData = action.payload;
+        draft.users = action.payload.data;
         break;
       case constants.BACKEND_HOMEPAGE_ERROR:
-        draft.error = action.error;
+        draft.error = action.payload;
         break;
     }
   });

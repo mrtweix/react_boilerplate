@@ -1,10 +1,10 @@
 import { takeLatest, put } from "redux-saga/effects";
 import * as actions from "../actions/homepageActions";
 import * as constants from "../actions/homepageActions";
-import * as api from "../../helpers/apiUrl";
-import callApi from "../../helpers/callApi";
+import * as api from "../../shared/apiList";
+import callApi from "../../shared/callApi";
 
-// funtion to fetch homepage Data
+// ***** LOAD HOMEPAGE DATA ***** //
 export function* loadHomepageDataSaga() {
   try {
     const response = yield callApi(api.usersURL);

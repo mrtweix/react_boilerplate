@@ -1,22 +1,27 @@
-import React from "react";
-import { Card, CardImg, CardText, CardTitle, Col } from "reactstrap";
+import React, { memo } from "react";
+import PropTypes from "prop-types";
+import { Card, CardImg, Col } from "react-bootstrap";
 
-function Profile(props) {
+const Profile = (props) => {
   const { user } = props;
   return (
     <Col>
       <Card body>
-        <CardTitle>
+        <Card.Title>
           Name: {user.first_name} {user.last_name}
-        </CardTitle>
-        <CardImg top width="10%" src={user.avatar} alt="user_image" />
-        <CardText>
-          Email:
-          <br /> {user.email}
-        </CardText>
+        </Card.Title>
+        <CardImg top src={user.avatar} alt="user_image" />
+        <Card.Body>
+          <Card.Title>Email Address</Card.Title>
+          <Card.Title>{user.email}</Card.Title>
+        </Card.Body>
       </Card>
     </Col>
   );
-}
+};
 
-export default Profile;
+Profile.propTypes = {
+  user: PropTypes.object.isRequired,
+};
+
+export default memo(Profile);

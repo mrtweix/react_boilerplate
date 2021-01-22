@@ -14,6 +14,6 @@ export const setHomepageData = (payload) => ({
   type: SET_HOMEPAGE_DATA,
 });
 export const backendHomepageError = (error) => ({
-  error,
+  payload: error,
   type: BACKEND_HOMEPAGE_ERROR,
 });

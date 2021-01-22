@@ -12,8 +12,8 @@ const callApi = (url, data = null, type = "GET") => {
     if (data) {
       formData.body = JSON.stringify(data);
     }
-    const apiUrl = baseURL + url;
-    response = call(request, apiUrl, formData);
+    const api = baseURL + url;
+    response = call(request, api, formData);
   } catch (error) {
     return false;
   }
