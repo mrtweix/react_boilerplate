@@ -1,14 +1,22 @@
-import React, { Fragment, memo, useEffect, Suspense } from "react";
+import React, { Fragment, memo, useEffect, Suspense, lazy } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import { createStructuredSelector } from "reselect";
 import * as actions from "../../redux/actions/homepageActions";
-const Profile = React.lazy(() => import("./Profile"));
+import * as selectors from "../../redux/selectors/homepageSelector";
+import "./homepage.css";
+
+const Profile = lazy(() => import("./Profile"));
 
 function Homepage(props) {
-  const { loadHomepage, homepageStore } = props;
-  const { users, error } = homepageStore;
+  const {
+    loadHomepage = () => {},
+    homepageUsers = {},
+    homepageError = {},
+  } = props;
 
   useEffect(() => {
     loadHomepage();
@@ -20,19 +28,30 @@ function Homepage(props) {
         <title>HomePage</title>
         <meta name="description" content="Description of HomePage" />
       </Helmet>
-      <Row style={{ display: "flex", flexWrap: "wrap" }}>
-        <Suspense fallback={"Loading..."}>
-          {users?.length > 0
-            ? users?.map((user, index) => <Profile user={user} key={index} />)
-            : error}
-        </Suspense>
-      </Row>
+      <Suspense fallback={"Loading..."}>
+        <Row className="band">
+          {homepageUsers?.length > 0
+            ? homepageUsers?.map((user, index) => (
+                <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                  <Profile user={user} key={index} />
+                </Col>
+              ))
+            : homepageError}
+        </Row>
+      </Suspense>
     </Fragment>
   );
 }
 
-const mapStateToProps = (state) => ({
-  homepageStore: state.homepage,
+Homepage.propTypes = {
+  loadHomepage: PropTypes.func.isRequired,
+  homepageUsers: PropTypes.array,
+  homepageError: PropTypes.string,
+};
+
+const mapStateToProps = createStructuredSelector({
+  homepageUsers: selectors.makeSelectHomepageUser(),
+  homepageError: selectors.makeSelectHomepageError(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,22 +1,23 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Card, CardImg, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const Profile = (props) => {
   const { user } = props;
   return (
-    <Col>
-      <Card body>
-        <Card.Title>
+    <Card className="my-3 p-3 rounded">
+      <Card.Img src={user.avatar} variant="top" alt="user_image" />
+      <Card.Body>
+        <Card.Title as="div">
           Name: {user.first_name} {user.last_name}
         </Card.Title>
-        <CardImg top src={user.avatar} alt="user_image" />
-        <Card.Body>
-          <Card.Title>Email Address</Card.Title>
-          <Card.Title>{user.email}</Card.Title>
-        </Card.Body>
-      </Card>
-    </Col>
+
+        <Card.Title>Email Address</Card.Title>
+        <Card.Title>
+          <h4>{user.email}</h4>
+        </Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 
