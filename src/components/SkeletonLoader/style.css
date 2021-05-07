@@ -1,0 +1,114 @@
+.first {
+  background: rgb(240, 240, 240);
+  height: 150px;
+}
+.animation1 {
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 100) 0%,
+    rgb(232, 232, 232, 100) 10%,
+    rgb(235, 235, 235, 100) 100%
+  );
+  height: 150px;
+  z-index: 1;
+  animation-name: aa;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes aa {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.third {
+  background: rgb(240, 240, 240);
+  height: 10px;
+  margin-top: 10px;
+}
+.fourth {
+  background: rgb(240, 240, 240);
+  height: 10px;
+  margin-top: 10px;
+  width: 60%;
+}
+.fifth {
+  background: rgb(240, 240, 240);
+  height: 10px;
+  margin-top: 10px;
+}
+.animation2 {
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 100) 0%,
+    rgb(232, 232, 232, 100) 10%,
+    rgb(235, 235, 235, 100) 100%
+  );
+  z-index: 1;
+  animation-name: bb;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes bb {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.animation3 {
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 100) 0%,
+    rgb(232, 232, 232, 100) 10%,
+    rgb(235, 235, 235, 100) 100%
+  );
+  height: 10px;
+  z-index: 1;
+  animation-name: cc;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes cc {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.animation4 {
+  background: linear-gradient(
+    90deg,
+    rgba(242, 242, 242, 100) 0%,
+    rgb(232, 232, 232, 100) 10%,
+    rgb(235, 235, 235, 100) 100%
+  );
+  height: 10px;
+  z-index: 1;
+  animation-name: dd;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes dd {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.overflow {
+  overflow: hidden;
+}

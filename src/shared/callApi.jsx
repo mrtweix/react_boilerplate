@@ -1,6 +1,5 @@
 import { call } from "redux-saga/effects";
 import request from "./request";
-import baseURL from "./baseUrl";
 
 // global function to call all types of api
 const callApi = (url, data = null, type = "GET") => {
@@ -12,7 +11,7 @@ const callApi = (url, data = null, type = "GET") => {
     if (data) {
       formData.body = JSON.stringify(data);
     }
-    const api = baseURL + url;
+    const api = process.env.REACT_APP_BASEURL + url;
     response = call(request, api, formData);
   } catch (error) {
     return false;

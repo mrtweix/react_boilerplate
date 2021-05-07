@@ -1,15 +1,15 @@
-import React, { Fragment, memo, useEffect, Suspense, lazy } from "react";
+import React, { Fragment, memo, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { createStructuredSelector } from "reselect";
+import Profile from "../../components/Profile/Loader";
 import * as actions from "../../redux/actions/homepageActions";
 import * as selectors from "../../redux/selectors/homepageSelector";
-import "./homepage.css";
 
-const Profile = lazy(() => import("./Profile"));
+import "./style.css";
 
 function Homepage(props) {
   const {
@@ -25,20 +25,16 @@ function Homepage(props) {
   return (
     <Fragment>
       <Helmet>
-        <title>HomePage</title>
-        <meta name="description" content="Description of HomePage" />
+        <title>Homepage</title>
+        <meta name="description" content="This is Homepage" />
       </Helmet>
-      <Suspense fallback={"Loading..."}>
-        <Row className="band">
-          {homepageUsers?.length > 0
-            ? homepageUsers?.map((user, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Profile user={user} key={index} />
-                </Col>
-              ))
-            : homepageError}
-        </Row>
-      </Suspense>
+      <Row className="band">
+        {homepageUsers?.map((user, index) => (
+          <Col key={index} sm={12} md={6} lg={4} xl={3}>
+            <Profile user={user} key={index} />
+          </Col>
+        )) || homepageError}
+      </Row>
     </Fragment>
   );
 }
