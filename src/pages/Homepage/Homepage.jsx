@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { createStructuredSelector } from "reselect";
-import Profile from "../../components/Profile/Loader";
-import * as actions from "../../redux/actions/homepageActions";
-import * as selectors from "../../redux/selectors/homepageSelector";
+import Profile from "components/Profile/Loader";
+import * as actions from "redux/actions/homepageActions";
+import * as selectors from "redux/selectors/homepageSelector";
 
 import "./style.css";
 

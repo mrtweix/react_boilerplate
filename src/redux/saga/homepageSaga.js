@@ -1,8 +1,8 @@
 import { takeLatest, put } from "redux-saga/effects";
+import callApi from "shared/callApi";
+import * as api from "shared/apiList";
 import * as actions from "../actions/homepageActions";
 import * as constants from "../actions/homepageActions";
-import * as api from "../../shared/apiList";
-import callApi from "../../shared/callApi";
 
 // ***** LOAD HOMEPAGE DATA ***** //
 export function* loadHomepageDataSaga() {

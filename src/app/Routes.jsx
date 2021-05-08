@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Homepage from "../pages/Homepage/Loader";
-import NotFound from "../components/NotFound";
+import Homepage from "pages/Homepage/Loader";
+import NotFound from "components/NotFound";
 
 function Routes() {
   return (
