@@ -1,26 +1,24 @@
 import React, { Fragment, memo, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import Profile from "components/Profile/Loader";
+import { Col, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
-import { Col, Row } from "react-bootstrap";
-import { createStructuredSelector } from "reselect";
-import Profile from "components/Profile/Loader";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "redux/actions/homepageActions";
 import * as selectors from "redux/selectors/homepageSelector";
 
 import "./style.css";
 
-function Homepage(props) {
-  const {
-    loadHomepage = () => {},
-    homepageUsers = {},
-    homepageError = {},
-  } = props;
+function Homepage() {
+  const dispatch = useDispatch();
+
+  const homepageUsers = useSelector(selectors.makeSelectHomepageUser());
+  const homepageError = useSelector(selectors.makeSelectHomepageError());
 
   useEffect(() => {
-    loadHomepage();
-  }, [loadHomepage]);
+    dispatch(actions.loadHomepageData());
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -28,6 +26,7 @@ function Homepage(props) {
         <title>Homepage</title>
         <meta name="description" content="This is Homepage" />
       </Helmet>
+
       <Row className="band">
         {homepageUsers?.map((user, index) => (
           <Col key={index} sm={12} md={6} lg={4} xl={3}>
@@ -40,19 +39,8 @@ function Homepage(props) {
 }
 
 Homepage.propTypes = {
-  loadHomepage: PropTypes.func.isRequired,
   homepageUsers: PropTypes.array,
   homepageError: PropTypes.string,
 };
 
-const mapStateToProps = createStructuredSelector({
-  homepageUsers: selectors.makeSelectHomepageUser(),
-  homepageError: selectors.makeSelectHomepageError(),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadHomepage: () => dispatch(actions.loadHomepageData()),
-});
-
-const homePage = connect(mapStateToProps, mapDispatchToProps)(Homepage);
-export default withRouter(memo(homePage));
+export default withRouter(memo(Homepage));
