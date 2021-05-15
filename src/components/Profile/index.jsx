@@ -7,36 +7,40 @@ import {
   LazyLoadComponent,
 } from "react-lazy-load-image-component";
 
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 const Profile = (props) => {
   const { user } = props;
   return (
-    <Card className="my-3 rounded">
+    <Card className="p-3 m-3">
       <LazyLoadImage
         src={user.avatar}
         alt="user_image"
-        width="350"
-        height="350"
         effect="blur"
+        className="mx-auto d-block"
+        width="130"
       />
-      <LazyLoadComponent>
-        <Card.Body>
-          <Card.Title as="div">
+      <Card.Body>
+        <LazyLoadComponent>
+          <Card.Title as="div" className="text-center">
             Name: {user.first_name} {user.last_name}
+            <br />
+            Email Address: {user.email}
           </Card.Title>
-          <Card.Title>Email Address</Card.Title>
-          <Card.Title>
-            <h4>{user.email}</h4>
-          </Card.Title>
-        </Card.Body>
-      </LazyLoadComponent>
+        </LazyLoadComponent>
+      </Card.Body>
     </Card>
   );
 };
 
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
+};
+
+Profile.defaultProps = {
+  user: {
+    avatar: "no-image",
+    first_name: "first_Name",
+    last_name: "last_Name",
+  },
 };
 
 export default trackWindowScroll(memo(Profile));

@@ -1,7 +1,7 @@
 import React, { Fragment, memo, useEffect } from "react";
 import PropTypes from "prop-types";
 import Profile from "components/Profile/Loader";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,14 +26,15 @@ function Homepage() {
         <title>Homepage</title>
         <meta name="description" content="This is Homepage" />
       </Helmet>
-
-      <Row className="band">
-        {homepageUsers?.map((user, index) => (
-          <Col key={index} sm={12} md={6} lg={4} xl={3}>
-            <Profile user={user} key={index} />
-          </Col>
-        )) || homepageError}
-      </Row>
+      <Container>
+        <Row>
+          {homepageUsers?.map((user, index) => (
+            <Col key={index + user} sm={12} md={6} lg={4} xl={3}>
+              <Profile user={user} key={index} />
+            </Col>
+          )) || homepageError}
+        </Row>
+      </Container>
     </Fragment>
   );
 }
