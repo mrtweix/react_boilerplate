@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { initialState } from "../reducers/homepageReducer";
+import { initialState } from "../reducers/home.reducer";
 
 const selectHomepageDomain = (state) => state.homepage || initialState;
 

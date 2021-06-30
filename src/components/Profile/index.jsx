@@ -10,12 +10,12 @@ import {
 const Profile = (props) => {
   const { user } = props;
   return (
-    <Card className="p-3 m-3">
+    <Card className="p-3 m-3 rounded-0">
       <LazyLoadImage
         src={user.avatar}
         alt="user_image"
         effect="blur"
-        className="mx-auto d-block"
+        className="mx-auto d-block rounded-circle"
         width="130"
       />
       <Card.Body>

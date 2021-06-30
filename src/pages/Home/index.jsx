@@ -1,12 +1,12 @@
 import React, { Fragment, memo, useEffect } from "react";
 import PropTypes from "prop-types";
-import Profile from "components/Profile/Loader";
+import { Profile } from "app/lazyImport/lazyLoad";
 import { Col, Container, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "redux/actions/homepageActions";
-import * as selectors from "redux/selectors/homepageSelector";
+import * as actions from "redux/actions/home.actions";
+import * as selectors from "redux/selectors/home.selectors";
 
 import "./style.css";
 

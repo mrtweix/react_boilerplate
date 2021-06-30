@@ -1,5 +1,5 @@
 import produce from "immer";
-import * as constants from "../actions/homepageActions";
+import * as constants from "../actions/home.actions";
 
 export const initialState = {
   users: null,
