@@ -1,6 +1,7 @@
 import React from "react";
 import loadable from "shared/loadable";
 import SkeletonLoader from "components/SkeletonLoader";
+import RoundLoader from "components/RoundLoader";
 
 // ******************** Export Components ******************** //
 export const LoginForm = loadable(() => import("components/LoginForm"), {
@@ -17,17 +18,17 @@ export const Profile = loadable(() => import("components/Profile"), {
 
 // ******************** Export Pages ******************** //
 export const Home = loadable(() => import("pages/Home"), {
-  fallback: <SkeletonLoader />,
+  fallback: <RoundLoader />,
 });
 
 export const NotFound = loadable(() => import("pages/404 Page"), {
-  fallback: <SkeletonLoader />,
+  fallback: <RoundLoader />,
 });
 
 export const Login = loadable(() => import("pages/Login"), {
-  fallback: <SkeletonLoader />,
+  fallback: <RoundLoader />,
 });
 
 export const Register = loadable(() => import("pages/Register"), {
-  fallback: <SkeletonLoader />,
+  fallback: <RoundLoader />,
 });

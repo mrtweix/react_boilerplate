@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect, useRef } from "react";
 import { Container, Row, Col, Card, Form, FormGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Input from "../common/Input";
@@ -11,8 +10,18 @@ const LoginForm = () => {
   });
   const { email, password } = values;
 
+  const emailRef = useRef();
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
   const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
+    setValues((prev) => ({ ...values, [name]: event.target.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(values);
   };
 
   return (
@@ -22,17 +31,18 @@ const LoginForm = () => {
           <Card className="rounded-0">
             <Card.Header className="py-2 text-center">LOGIN</Card.Header>
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <FormGroup>
                   <Col lg={12} md={12} sm={12}>
                     <Input
                       type="email"
                       name="email"
                       value={email}
+                      ref={emailRef}
                       onChange={handleChange("email")}
                       className="form-control rounded-0"
-                      labelText="Email Address"
-                      labelClass="col-md-4 col-form-label"
+                      labeltext="Email Address"
+                      labelclass="col-md-4 col-form-label"
                     />
                   </Col>
                 </FormGroup>
@@ -45,8 +55,8 @@ const LoginForm = () => {
                       value={password}
                       onChange={handleChange("password")}
                       className="form-control rounded-0"
-                      labelText="Password"
-                      labelClass="col-md-4 col-form-label"
+                      labeltext="Password"
+                      labelclass="col-md-4 col-form-label"
                     />
                   </Col>
                 </FormGroup>

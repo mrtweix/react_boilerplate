@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Form, FormGroup } from "react-bootstrap";
@@ -13,7 +12,12 @@ const RegisterForm = () => {
   const { name, email, password } = values;
 
   const handleChange = (name) => (event) => {
-    setValues({ ...values, [name]: event.target.value });
+    setValues((prev) => ({ ...values, [name]: event.target.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(values);
   };
 
   return (
@@ -23,7 +27,7 @@ const RegisterForm = () => {
           <Card className="rounded-0">
             <Card.Header className="py-2 text-center">REGISTER</Card.Header>
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <FormGroup>
                   <Col lg={12} md={12} sm={12}>
                     <Input
@@ -31,8 +35,8 @@ const RegisterForm = () => {
                       value={name}
                       onChange={handleChange("name")}
                       className="form-control rounded-0"
-                      labelText="User Name"
-                      labelClass="col-md-4 col-form-label"
+                      labeltext="User Name"
+                      labelclass="col-md-4 col-form-label"
                     />
                   </Col>
                 </FormGroup>
@@ -45,8 +49,8 @@ const RegisterForm = () => {
                       value={email}
                       onChange={handleChange("email")}
                       className="form-control rounded-0"
-                      labelText="Email Address"
-                      labelClass="col-md-4 col-form-label"
+                      labeltext="Email Address"
+                      labelclass="col-md-4 col-form-label"
                     />
                   </Col>
                 </FormGroup>
@@ -59,8 +63,8 @@ const RegisterForm = () => {
                       value={password}
                       onChange={handleChange("password")}
                       className="form-control rounded-0"
-                      labelText="Password"
-                      labelClass="col-md-4 col-form-label"
+                      labeltext="Password"
+                      labelclass="col-md-4 col-form-label"
                     />
                   </Col>
                 </FormGroup>

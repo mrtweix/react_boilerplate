@@ -2,8 +2,8 @@ import React, { memo, Fragment, forwardRef } from "react";
 
 const Input = forwardRef((props, ref) => {
   const {
-    labelClass,
-    labelText,
+    labelclass,
+    labeltext,
     name,
     type = "text",
     className,
@@ -16,8 +16,8 @@ const Input = forwardRef((props, ref) => {
   } = props;
   return (
     <Fragment>
-      <label htmlFor={name} className={labelClass}>
-        {labelText}
+      <label htmlFor={name} className={labelclass}>
+        {labeltext}
       </label>
       <input
         {...props}

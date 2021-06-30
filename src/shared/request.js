@@ -18,20 +18,24 @@ function parseJSON(response) {
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
+  } else if (!response.ok) {
+    throw Error(response.statusText);
   }
   const error = new Error(response.statusText);
   error.response = response;
   throw error;
 }
 
-export default function request(url, options) {
+const request = async (url, options) => {
   const header = {
     "Content-Type": "application/json",
     accept: "application/json",
   };
   const newOptions = { ...options, headers: header };
-  return fetch(url, newOptions)
+  return await fetch(url, newOptions)
     .then(checkStatus)
     .then(parseJSON)
     .then(parseTEXT);
-}
+};
+
+export default request;
