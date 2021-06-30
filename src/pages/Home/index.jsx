@@ -1,6 +1,6 @@
 import React, { Fragment, memo, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Profile } from "app/lazyImport/lazyLoad";
+import { Profile } from "app/lazyImport";
 import { Col, Container, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";

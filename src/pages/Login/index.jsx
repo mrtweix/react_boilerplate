@@ -2,7 +2,7 @@ import React, { Fragment, memo } from "react";
 import { withRouter } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
-import { LoginForm } from "app/lazyImport/lazyLoad";
+import { LoginForm } from "app/lazyImport";
 
 const Login = () => {
   return (

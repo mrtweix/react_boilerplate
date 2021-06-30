@@ -2,7 +2,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "./Public.route";
 import Layout from "layouts/Layout";
 
-import * as loader from "app/lazyImport/lazyLoad";
+import * as loader from "app/lazyImport";
 
 function Routes() {
   return (
